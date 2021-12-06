@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PeliculasService } from '../../services/peliculas.service';
 import { PeliculaDetalle } from '../../interfaces/interfaces';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-pelicula',
@@ -8,15 +9,19 @@ import { PeliculaDetalle } from '../../interfaces/interfaces';
   styleUrls: ['./detalle-pelicula.component.scss'],
 })
 export class DetallePeliculaComponent implements OnInit {
-  id: string;
+  detallePelicula: any = {};
 
-  detallePelicula;
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private peliculasService: PeliculasService
+  ) {}
 
-  constructor(private peliculasService: PeliculasService) {}
+  imagenURL(imagen: string): string {
+    return `https://image.tmdb.org/t/p/w500/${imagen}`;
+  }
 
   ngOnInit() {
-    this.peliculasService.obtenerId.subscribe((id) => {
-      this.id = id;
+    this.activatedRoute.params.subscribe(({ id }) => {
       this.peliculasService.obtenerPelicula(id).subscribe((data) => {
         this.detallePelicula = data;
       });

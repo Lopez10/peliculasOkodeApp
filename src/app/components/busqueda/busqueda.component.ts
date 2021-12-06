@@ -3,12 +3,11 @@ import { PeliculasService } from '../../services/peliculas.service';
 import { Data } from '../../interfaces/interfaces';
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss'],
+  selector: 'app-busqueda',
+  templateUrl: 'busqueda.component.html',
+  styleUrls: ['busqueda.component.scss'],
 })
-export class Tab2Page {
-  @Input() id: string;
+export class BusquedaComponent {
   peliculasBusqueda = [];
   peliculaBuscada = '';
 
@@ -19,10 +18,5 @@ export class Tab2Page {
     this.peliculasService.obtenerPeliculas(pelicula).subscribe((data: Data) => {
       this.peliculasBusqueda = data.results;
     });
-  }
-
-  verPelicula({ id }) {
-    console.log(id);
-    this.peliculasService.changeId(id);
   }
 }

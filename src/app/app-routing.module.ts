@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { DetallePeliculaComponent } from './components/detalle-pelicula/detalle-pelicula.component';
+import { BusquedaComponent } from './components/busqueda/busqueda.component';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () =>
-      import('./components/tab2/tab2.module').then((m) => m.Tab2PageModule),
+    component: BusquedaComponent,
   },
   {
-    path: ':id',
-    component: DetallePeliculaComponent,
+    path: 'busqueda/:id',
+    loadChildren: () =>
+      import('./components/detalle-pelicula/detalle-pelicula.module').then(
+        (m) => m.DetallePeliculaModule
+      ),
   },
 ];
 @NgModule({

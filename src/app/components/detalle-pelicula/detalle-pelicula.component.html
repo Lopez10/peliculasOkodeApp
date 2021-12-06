@@ -1,7 +1,28 @@
+<ion-toolbar>
+  <ion-button [routerLink]="['/']" fill="clear" shape="round">
+    <ion-icon name="chevron-back-outline"></ion-icon>
+  </ion-button>
+</ion-toolbar>
+<!-- <pre>
+  {{ detallePelicula | json }}
+</pre> -->
 <ion-content>
-  <ion-label>
-    <pre>
-      {{ detallePelicula | json }}
-    </pre>
-  </ion-label>
+  <ion-content>
+    <ion-card>
+      <ion-img
+        [src]="imagenURL(detallePelicula.backdrop_path)"
+        *ngIf="detallePelicula.backdrop_path"
+      ></ion-img>
+
+      <ion-card-header>
+        <ion-card-subtitle>{{
+          detallePelicula.release_date
+        }}</ion-card-subtitle>
+        <ion-card-title>{{ detallePelicula.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ detallePelicula.overview }}
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
 </ion-content>
