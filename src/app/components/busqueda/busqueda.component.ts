@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { PeliculasService } from '../../services/peliculas.service';
-import { Data } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-busqueda',
@@ -15,7 +14,7 @@ export class BusquedaComponent {
 
   onChangeSearch(evento) {
     const pelicula = evento.detail.value;
-    this.peliculasService.obtenerPeliculas(pelicula).subscribe((data: Data) => {
+    this.peliculasService.obtenerPeliculas(pelicula).subscribe((data: any) => {
       this.peliculasBusqueda = data.results;
     });
   }
