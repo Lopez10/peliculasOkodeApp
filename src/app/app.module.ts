@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { DetallePeliculaComponent } from './detalle-pelicula/detalle-pelicula.component';
+import { DetallePeliculaComponent } from './components/detalle-pelicula/detalle-pelicula.component';
 
 @NgModule({
   declarations: [AppComponent, DetallePeliculaComponent],

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { PeliculasService } from '../services/peliculas.service';
-import { Data } from '../interfaces/data';
+import { PeliculasService } from '../../services/peliculas.service';
+import { Data } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-tab2',

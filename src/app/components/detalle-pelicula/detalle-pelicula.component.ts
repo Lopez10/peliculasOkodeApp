@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PeliculasService } from '../services/peliculas.service';
+import { PeliculasService } from '../../services/peliculas.service';
+import { PeliculaDetalle } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-detalle-pelicula',
@@ -9,12 +10,16 @@ import { PeliculasService } from '../services/peliculas.service';
 export class DetallePeliculaComponent implements OnInit {
   id: string;
 
+  detallePelicula;
+
   constructor(private peliculasService: PeliculasService) {}
 
   ngOnInit() {
     this.peliculasService.obtenerId.subscribe((id) => {
       this.id = id;
-      console.log(id);
+      this.peliculasService.obtenerPelicula(id).subscribe((data) => {
+        this.detallePelicula = data;
+      });
     });
   }
 }

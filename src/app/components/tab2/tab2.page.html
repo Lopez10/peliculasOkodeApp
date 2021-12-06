@@ -9,7 +9,9 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let pelicula of peliculasBusqueda">
-      <ion-label (click)="verPelicula(pelicula)">{{pelicula.title}}</ion-label>
+      <ion-label [routerLink]="[ pelicula.id]" (click)="verPelicula(pelicula)"
+        >{{pelicula.title}}</ion-label
+      >
     </ion-item>
   </ion-list>
 </ion-content>

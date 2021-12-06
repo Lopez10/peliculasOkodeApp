@@ -28,7 +28,7 @@ export class PeliculasService {
 
   obtenerPelicula(id: string) {
     return this.http.get(
-      `${url}search/movie?api_key=${apiKey}&language=es&include_image_language=es&query=${id}`
+      `${url}movie/${id}?api_key=${apiKey}&language=es&include_image_language=es&query=${id}`
     );
   }
 }
