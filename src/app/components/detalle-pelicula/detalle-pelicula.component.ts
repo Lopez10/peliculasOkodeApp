@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PeliculasService } from '../../services/peliculas.service';
 import { ActivatedRoute } from '@angular/router';
+import { DetallePelicula } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-detalle-pelicula',
@@ -8,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./detalle-pelicula.component.scss'],
 })
 export class DetallePeliculaComponent implements OnInit {
-  detallePelicula: any = {};
+  detallePelicula: DetallePelicula = {};
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -21,9 +22,9 @@ export class DetallePeliculaComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(({ id }) => {
-      this.peliculasService.obtenerPelicula(id).subscribe((data) => {
-        this.detallePelicula = data;
-      });
+      this.peliculasService
+        .obtenerPelicula(id)
+        .subscribe((data: DetallePelicula) => (this.detallePelicula = data));
     });
   }
 }

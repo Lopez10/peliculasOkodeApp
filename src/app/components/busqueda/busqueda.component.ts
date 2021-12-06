@@ -12,10 +12,12 @@ export class BusquedaComponent {
 
   constructor(private peliculasService: PeliculasService) {}
 
-  onChangeSearch(evento) {
-    const pelicula = evento.detail.value;
-    this.peliculasService.obtenerPeliculas(pelicula).subscribe((data: any) => {
-      this.peliculasBusqueda = data.results;
-    });
+  cambioBusqueda({ detail: { value } }) {
+    const pelicula = value;
+    this.peliculasService
+      .obtenerPeliculas(pelicula)
+      .subscribe(({ results }: any) => {
+        this.peliculasBusqueda = results;
+      });
   }
 }
